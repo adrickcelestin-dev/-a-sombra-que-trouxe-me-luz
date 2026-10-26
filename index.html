@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#241a2b">
+<title>A Sombra que Trouxe-me Luz — Por Celestin</title>
+<style>
+:root{--ink:#2a2030;--plum:#4d314b;--rose:#c68b9c;--gold:#d9bd85;--cream:#fff9f2;--muted:#786b78}
+*{box-sizing:border-box} body{margin:0;background:radial-gradient(ellipse at top,#5d3d59 0,#241a2b 58%,#17131d 100%);color:var(--ink);font-family:Georgia,'Times New Roman',serif;min-height:100vh}
+button,input,textarea{font:inherit} .shell{max-width:1000px;margin:auto;padding:22px}
+.top{display:flex;justify-content:space-between;align-items:center;color:#f9eeda;gap:12px;font-family:Arial,sans-serif;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+.brand{color:var(--gold)} .cover{margin:28px auto 22px;max-width:780px;min-height:440px;border:1px solid #c6a97d99;border-radius:20px;padding:52px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff9f2;background:linear-gradient(150deg,#352339ee,#5b3a52cc),radial-gradient(circle at 50% 15%,#d9bd8533,transparent 48%);box-shadow:0 25px 80px #0006;position:relative;overflow:hidden}
+.cover:before,.cover:after{content:"✦";position:absolute;color:#d9bd8577;font-size:80px}.cover:before{top:14px;left:20px}.cover:after{bottom:10px;right:22px}
+.eyebrow{letter-spacing:.25em;text-transform:uppercase;font:11px Arial,sans-serif;color:var(--gold)} h1{font-size:clamp(2.2rem,7vw,4.7rem);line-height:1.03;font-weight:normal;max-width:650px;margin:22px 0 16px} .subtitle{font-style:italic;color:#f1dce2;max-width:440px;line-height:1.6}.byline{margin-top:34px;font:12px Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:20px 0}.nav button,.actions button{border:1px solid #d9bd8580;background:#3b293b;color:#fff7ed;padding:11px 15px;border-radius:999px;cursor:pointer}.nav button.active,.actions button.primary{background:var(--gold);color:#2a2030;border-color:var(--gold)}
+.page{max-width:780px;margin:0 auto 22px;background:var(--cream);border-radius:18px;padding:clamp(24px,5vw,48px);box-shadow:0 20px 55px #0004;min-height:330px;animation:fade .35s ease}.chapter-no{font:11px Arial,sans-serif;letter-spacing:.2em;color:#a27480;text-transform:uppercase}.page h2{font-size:clamp(1.7rem,5vw,2.5rem);font-weight:normal;color:var(--plum);margin:12px 0 24px}.page p{font-size:1.09rem;line-height:1.9;margin:0 0 17px}.page .verse{margin:25px 0;padding:17px 20px;border-left:3px solid var(--gold);background:#f6eee7;font-style:italic;line-height:1.7}.actions{display:flex;justify-content:space-between;gap:10px;max-width:780px;margin:0 auto 42px;flex-wrap:wrap}.actions button{min-width:120px}
+.panel{max-width:780px;margin:22px auto;background:#fff9f2;border-radius:18px;padding:clamp(22px,4vw,36px);box-shadow:0 20px 55px #0003}.panel h2{color:var(--plum);font-weight:normal;font-size:1.8rem;margin-top:0}.panel p,.small{line-height:1.7;color:#514652}.panel textarea{width:100%;min-height:150px;border:1px solid #d8c7cd;border-radius:12px;padding:14px;background:#fffdf9;resize:vertical}.panel input[type=text]{width:100%;border:1px solid #d8c7cd;border-radius:10px;padding:12px;margin:6px 0 12px}.panel button{background:var(--plum);color:white;border:0;border-radius:999px;padding:12px 18px;cursor:pointer;margin:7px 6px 7px 0}.panel button.secondary{background:#eee2e5;color:#3c2b3c}.consent{background:#f4e9e7;border-radius:12px;padding:15px;margin:16px 0;color:#493847}.status{font:13px Arial,sans-serif;color:#4b654e;margin-top:12px}.maplink{display:inline-block;color:#593d5b;overflow-wrap:anywhere}.footer{text-align:center;color:#d9c8d7;padding:20px 10px 40px;font:12px Arial,sans-serif;line-height:1.8}.hidden{display:none!important}
+@keyframes fade{from{opacity:.3;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:520px){.shell{padding:14px}.cover{min-height:390px;padding:35px 22px}.top{font-size:.7rem}.nav button{padding:9px 11px;font-size:.86rem}.actions button{flex:1}.page p{font-size:1.03rem}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="top"><span class="brand">Uma história de Celestin</span><span>Livro digital</span></div>
+  <header class="cover">
+    <div class="eyebrow">Uma história de encontros e silêncios</div>
+    <h1>A Sombra que<br> Trouxe-me Luz</h1>
+    <div class="subtitle">Uma história de amor cujo último capítulo pertence a Shady — se ela quiser escrevê-lo.</div>
+    <div class="byline">Por Celestin</div>
+  </header>
+  <nav class="nav" id="chapterNav" aria-label="Capítulos"></nav>
+  <main class="page" aria-live="polite">
+    <div class="chapter-no" id="chapterNo"></div>
+    <h2 id="chapterTitle"></h2>
+    <div id="chapterText"></div>
+  </main>
+  <div class="actions">
+    <button id="prevBtn" class="secondary">← Anterior</button>
+    <button id="nextBtn" class="primary">Próxima página →</button>
+  </div>
+
+  <section class="panel" id="herChapter">
+    <div class="chapter-no">Uma página em branco</div>
+    <h2>O capítulo de Shady</h2>
+    <p>Há palavras que não devem ser exigidas. Se algum dia quiseres, Shady, este espaço é teu para escreveres o que sentes, o que pensas ou simplesmente para deixares uma mensagem. Não tens obrigação de responder.</p>
+    <label for="shadyWords">A tua página (opcional)</label>
+    <textarea id="shadyWords" placeholder="Escreve aqui, apenas se quiseres…"></textarea>
+    <button id="saveWords">Guardar neste dispositivo</button>
+    <button id="clearWords" class="secondary">Apagar texto guardado</button>
+    <div id="wordsStatus" class="status" aria-live="polite">O texto fica guardado apenas neste navegador; não é enviado a Celestin.</div>
+  </section>
+
+  <section class="panel" id="location">
+    <div class="chapter-no">Partilha opcional</div>
+    <h2>Partilhar localização</h2>
+    <p>Esta função é separada do livro. A localização só será consultada depois de tocares no botão abaixo e concederes permissão ao navegador. Podes parar a partilha a qualquer momento.</p>
+    <div class="consent"><strong>Importante:</strong> nesta versão de demonstração, a localização é mostrada apenas neste dispositivo e não é enviada para um painel privado nem para outra pessoa. Para partilhar entre dispositivos, é necessário configurar um serviço seguro, com autenticação e permissões.</div>
+    <button id="startLocation">Concordo e iniciar localização</button>
+    <button id="stopLocation" class="secondary" disabled>Parar partilha</button>
+    <div id="locationStatus" class="status" aria-live="polite">Partilha desligada.</div>
+    <div id="locationDetails" class="small"></div>
+    <a id="mapLink" class="maplink hidden" target="_blank" rel="noopener noreferrer">Abrir a minha posição no mapa</a>
+  </section>
+  <div class="footer">Feito com respeito, carinho e liberdade.<br>O silêncio também merece ser respeitado. — Celestin</div>
+</div>
+<script>
+const chapters = [
+{nav:"Prólogo",no:"Prólogo",title:"Há sombras que iluminam",body:[
+"Nem todas as histórias começam com uma promessa. Algumas começam apenas com um olhar — breve, inesperado, mas suficientemente forte para permanecer na memória.",
+"Esta é a história de Celestin e Shady. Não é uma história que pretende decidir o que Shady sente, nem exigir que o futuro siga um caminho específico. É, antes, o relato sincero de um encontro que deixou luz onde antes havia apenas rotina.",
+"Há pessoas que chegam sem anunciar a sua importância. E, por vezes, o que mais nos marca não é o tempo que partilhámos, mas a forma como um instante nos fez sentir."
+]},
+{nav:"Capítulo 1",no:"Capítulo I",title:"A paragem onde tudo começou",body:[
+"Era uma paragem como tantas outras. Gente a chegar, gente a partir, passos apressados e pensamentos ocupados com os destinos de cada dia.",
+"Então, entre o movimento e a espera, os olhares de Celestin e Shady encontraram-se. Houve um sorriso — simples, talvez breve, mas capaz de tornar aquele momento diferente de todos os outros.",
+"Os números foram trocados. Um gesto pequeno, quase banal para quem o visse de fora, mas que abriu uma porta para uma conversa que nenhum dos dois poderia prever."
+]},
+{nav:"Capítulo 2",no:"Capítulo II",title:"Dois dias fora do tempo",body:[
+"As mensagens começaram a chegar e, sem grande esforço, a conversa ganhou vida. Uma palavra puxava outra; uma pergunta abria espaço para uma nova resposta. O tempo parecia passar depressa quando estavam a conversar.",
+"Durante dois dias, falaram com uma frequência que fez Celestin parar para pensar. Não era apenas a quantidade de mensagens, mas a facilidade com que a conversa continuava, como se o silêncio entre uma resposta e outra fosse sempre curto demais.",
+"Mas havia uma verdade que não podia ficar escondida. Celestin estava comprometido, e sabia que a honestidade precisava de vir antes de qualquer expectativa."
+]},
+{nav:"Capítulo 3",no:"Capítulo III",title:"A pergunta que abriu o silêncio",body:[
+"Celestin decidiu falar com franqueza. Disse que estava comprometido e, ao mesmo tempo, tentou compreender o que aquela proximidade poderia significar. Perguntou se Shady receava apaixonar-se, se conversar tanto poderia fazer nascer sentimentos.",
+"Talvez a pergunta tenha sido difícil. Talvez tenha chegado num momento inesperado. Só Shady conhece verdadeiramente o que sentiu ao lê-la.",
+"A resposta foi uma proposta de parar de conversar. Depois, veio o silêncio. Celestin ficou com perguntas que não podia responder por ela — e com a responsabilidade de respeitar a distância que ela escolheu."
+]},
+{nav:"Capítulo 4",no:"Capítulo IV",title:"A sombra que ficou",body:[
+"Há silêncios que deixam espaço para imaginar mil explicações. A mente tenta preencher o que não sabe, mas imaginar não é o mesmo que conhecer a verdade.",
+"Celestin podia sentir saudade da conversa, curiosidade ou tristeza por ela ter terminado tão depressa. Ainda assim, precisava de lembrar-se de que Shady não lhe devia uma explicação, uma resposta nem uma continuação.",
+"Se o encontro trouxe luz, essa luz também precisava de iluminar o caminho certo: agir com honestidade, reconhecer os próprios limites e respeitar a liberdade de quem cruzou o seu caminho."
+]},
+{nav:"Capítulo 5",no:"Capítulo V",title:"A carta que não exige resposta",body:[
+"Shady, se algum dia leres estas páginas, quero que saibas que escrevi esta história para dar forma ao que vivi, não para te prender a ela.",
+"O nosso encontro foi breve, mas ficou na minha memória. Gostei da leveza das nossas conversas e da surpresa de encontrar alguém com quem as palavras pareciam fluir. Também sei que a minha situação exigia clareza, e que tu tens todo o direito de escolher o que é melhor para ti.",
+"Não te escrevo para pedir que voltes, nem para te fazer sentir responsável pelo que senti. Se preferires que esta história termine aqui, respeitarei isso. Se algum dia quiseres dizer algo, escutarei sem presumir o que a tua resposta deve ser.",
+"Com respeito, Celestin."
+]},
+{nav:"Epílogo",no:"Epílogo",title:"O livro ainda não terminou",body:[
+"Talvez esta história seja apenas uma lembrança de dois dias e de um encontro numa paragem. Talvez, com o tempo, se torne uma memória tranquila, sem perguntas por resolver.",
+"Não cabe a Celestin escrever as páginas de Shady. A parte dela pertence-lhe por inteiro: pode ficar em branco, pode ser escrita, ou pode nunca ser partilhada.",
+"Porque uma história bonita não é aquela em que alguém é obrigado a ficar. É aquela em que cada pessoa pode escolher livremente — e em que a escolha é respeitada.",
+"— Por Celestin"
+]}
+];
+let current = 0;
+const nav = document.getElementById('chapterNav');
+function render(){
+  nav.innerHTML='';
+  chapters.forEach((c,i)=>{const b=document.createElement('button');b.textContent=c.nav;b.className=i===current?'active':'';b.onclick=()=>{current=i;render()};nav.appendChild(b)});
+  const c=chapters[current];document.getElementById('chapterNo').textContent=c.no;
+  document.getElementById('chapterTitle').textContent=c.title;
+  const body=document.getElementById('chapterText');body.innerHTML='';
+  c.body.forEach(t=>{const p=document.createElement('p');p.textContent=t;body.appendChild(p)});
+  document.getElementById('prevBtn').disabled=current===0;
+  document.getElementById('nextBtn').textContent=current===chapters.length-1?'Voltar ao prólogo ↺':'Próxima página →';
+  document.getElementById('prevBtn').style.opacity=current===0?'.45':'1';
+}
+document.getElementById('prevBtn').onclick=()=>{if(current>0){current--;render();window.scrollTo({top:0,behavior:'smooth'})}};
+document.getElementById('nextBtn').onclick=()=>{current=current===chapters.length-1?0:current+1;render();window.scrollTo({top:0,behavior:'smooth'})};
+render();
+
+const words=document.getElementById('shadyWords'), wordsStatus=document.getElementById('wordsStatus');
+try{words.value=localStorage.getItem('shadyChapter')||'';}catch(e){}
+document.getElementById('saveWords').onclick=()=>{try{localStorage.setItem('shadyChapter',words.value);wordsStatus.textContent='Guardado apenas neste dispositivo. Não foi enviado a ninguém.';}catch(e){wordsStatus.textContent='Não foi possível guardar neste navegador. Podes copiar o texto para outro lugar.'}};
+document.getElementById('clearWords').onclick=()=>{words.value='';try{localStorage.removeItem('shadyChapter')}catch(e){}wordsStatus.textContent='Texto local apagado.'};
+
+let watchId=null;
+const locStatus=document.getElementById('locationStatus'), details=document.getElementById('locationDetails'), mapLink=document.getElementById('mapLink');
+const start=document.getElementById('startLocation'), stop=document.getElementById('stopLocation');
+function stopSharing(){if(watchId!==null&&navigator.geolocation){navigator.geolocation.clearWatch(watchId)}watchId=null;start.disabled=false;stop.disabled=true;locStatus.textContent='Partilha desligada.';details.textContent='';mapLink.classList.add('hidden');}
+start.onclick=()=>{
+  if(!navigator.geolocation){locStatus.textContent='Este navegador não disponibiliza geolocalização.';return;}
+  locStatus.textContent='A pedir permissão ao navegador…';start.disabled=true;stop.disabled=false;
+  watchId=navigator.geolocation.watchPosition(pos=>{
+    const lat=pos.coords.latitude,lon=pos.coords.longitude;
+    locStatus.textContent='Localização activa neste dispositivo. Para parar, toca em “Parar partilha”.';
+    details.textContent='Precisão aproximada: '+Math.round(pos.coords.accuracy)+' metros. Coordenadas: '+lat.toFixed(5)+', '+lon.toFixed(5)+'.';
+    mapLink.href='https://www.openstreetmap.org/?mlat='+encodeURIComponent(lat)+'&mlon='+encodeURIComponent(lon)+'#map=16/'+encodeURIComponent(lat)+'/'+encodeURIComponent(lon);
+    mapLink.textContent='Abrir a minha posição no mapa';mapLink.classList.remove('hidden');
+  },err=>{
+    const msgs={1:'Permissão recusada. Nenhuma localização foi obtida.',2:'A localização não está disponível neste momento.',3:'O pedido de localização demorou demasiado.'};
+    locStatus.textContent=msgs[err.code]||'Não foi possível obter a localização.';start.disabled=false;stop.disabled=true;watchId=null;
+  },{enableHighAccuracy:true,maximumAge:5000,timeout:15000});
+};
+stop.onclick=stopSharing;
+window.addEventListener('pagehide',()=>{if(watchId!==null&&navigator.geolocation)navigator.geolocation.clearWatch(watchId)});
+</script>
+</body>
+</html>
